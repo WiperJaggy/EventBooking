@@ -59,3 +59,48 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+# Event Management API
+
+A Laravel-based API for managing events with filtering and sorting capabilities.
+
+## Features
+-Create Events and Bookings for them
+- Filter events by date
+- Sort events by capacity or date
+- RESTful endpoints for event management
+
+## API Documentation
+[Download Postman Collection](./docs/Event-API.postman_collection.json)
+
+## Installation
+1. Clone repository
+2. `composer install`
+3. Copy `.env.example` to `.env`
+4. `php artisan key:generate`
+5. Configure database
+6. `php artisan migrate`
+7. `php artisan serve`
+
+## Endpoints
+Endpoint Method	Description	Parameters	Auth Required
+
+/api/register	POST	Register new user	{name, email, password, password_confirmation}
+/api/login	POST	User login	{email, password}
+/api/logout	POST	User logout	-	Yes (Bearer)
+/api/user	GET	    Get authenticated user data	-
+
+/api/events	GET    	Get all events	?sort=capacity&direction=desc	No
+/api/events	POST	Create new event	FormData: {title, description, date, capacity, image}	Yes (Bearer)
+/api/events/{id}	GET	Get single event	-	No
+/api/events/{id}	PATCH	Update event	{title} (JSON)	Yes (Bearer)
+/api/events/{id}	DELETE	Delete event	-	Yes (Bearer)
+/api/events/{id}/upload	POST	Upload event image	FormData: {image}	Yes (Bearer)
+
+/api/bookings	GET	    Get user's bookings	-	Yes (Bearer)
+/api/bookings	POST	Book an event	{event_id}	Yes (Bearer)
+/api/bookings/{id}    	GET	Get specific booking	-	Yes (Bearer)
+/api/bookings/{id}	    DELETE	Cancel booking	-	Yes (Bearer)
+/api/user/profile-picture	POST	Update profile picture	FormData: {profile_picture}	Yes (Bearer)
+
