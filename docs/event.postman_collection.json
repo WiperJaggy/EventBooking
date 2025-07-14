@@ -1,0 +1,633 @@
+{
+	"info": {
+		"_postman_id": "5768996d-1ad6-4635-95c5-0c2c19e54f1d",
+		"name": "event",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32551215"
+	},
+	"item": [
+		{
+			"name": "register",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": " application/json",
+						"type": "default"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Test User\",\r\n    \"email\": \"test@example.com\",\r\n    \"password\": \"password\",\r\n    \"password_confirmation\": \"password\"\r\n}"
+				},
+				"url": {
+					"raw": "http://event.test/api/register",
+					"protocol": "http",
+					"host": [
+						"event",
+						"test"
+					],
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"test@example.com\",\r\n    \"password\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://event.test/api/login",
+					"protocol": "http",
+					"host": [
+						"event",
+						"test"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer 16|f7X59t4jbxWiVdOuuDDYy575Ok2UmDPlPbjQZ7i8701ba8d5",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://event.test/api/logout",
+					"protocol": "http",
+					"host": [
+						"event",
+						"test"
+					],
+					"path": [
+						"api",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user ",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer 20|GTnhjs80t70pxsmMLjIDKLYaiZurMHId5IJqtM7H1eb8f774",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://event.test/api/user",
+					"protocol": "http",
+					"host": [
+						"event",
+						"test"
+					],
+					"path": [
+						"api",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get events",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "My Awesome Event",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "description",
+							"value": "This is a description of my Awsewome Event",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "date",
+							"value": "2025-07-20 18:00:00",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "capacity",
+							"value": "100",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/NIZAR/Pictures/Screenshots/Screenshot (77).png",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://event.test/api/events?sort=capacity&direction=desc",
+					"protocol": "http",
+					"host": [
+						"event",
+						"test"
+					],
+					"path": [
+						"api",
+						"events"
+					],
+					"query": [
+						{
+							"key": "sort",
+							"value": "capacity"
+						},
+						{
+							"key": "direction",
+							"value": "desc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get an event",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://event.test/api/events/8",
+					"protocol": "http",
+					"host": [
+						"event",
+						"test"
+					],
+					"path": [
+						"api",
+						"events",
+						"8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete an event ",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer 5|2IlfpUrYwTVaB0tI4QRpxh39uVUyN85tvHEGxMStf064b2d7",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://event.test/api/events/2",
+					"protocol": "http",
+					"host": [
+						"event",
+						"test"
+					],
+					"path": [
+						"api",
+						"events",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create new event",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer 3|2IbqwEEx6TXeFrHXQkXooMrn8f2nxyamErEJ6ZAW5212d1ae",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "My Awesome Event",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "This is a description of my Awsewome Event",
+							"type": "text"
+						},
+						{
+							"key": "date",
+							"value": "2025-07-20 18:00:00",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/NIZAR/Pictures/Screenshots/Screenshot (8).png"
+						},
+						{
+							"key": "capacity",
+							"value": "100",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://event.test/api/events",
+					"protocol": "http",
+					"host": [
+						"event",
+						"test"
+					],
+					"path": [
+						"api",
+						"events"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "edit my event",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer 20|GTnhjs80t70pxsmMLjIDKLYaiZurMHId5IJqtM7H1eb8f774",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\":\"THe first event\"\r\n}"
+				},
+				"url": {
+					"raw": "http://event.test/api/events/9",
+					"protocol": "http",
+					"host": [
+						"event",
+						"test"
+					],
+					"path": [
+						"api",
+						"events",
+						"9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get my bookings",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer 8|6U7GkamfB1OxIJFY2VJ5JUkbA7zD2dlhtGaT0kwY724a5e71",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://event.test/api/bookings",
+					"protocol": "http",
+					"host": [
+						"event",
+						"test"
+					],
+					"path": [
+						"api",
+						"bookings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "book an event",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer 8|6U7GkamfB1OxIJFY2VJ5JUkbA7zD2dlhtGaT0kwY724a5e71",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"event_id\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://event.test/api/bookings",
+					"protocol": "http",
+					"host": [
+						"event",
+						"test"
+					],
+					"path": [
+						"api",
+						"bookings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get a specific booking",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer 20|GTnhjs80t70pxsmMLjIDKLYaiZurMHId5IJqtM7H1eb8f774",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://event.test/api/bookings/6",
+					"protocol": "http",
+					"host": [
+						"event",
+						"test"
+					],
+					"path": [
+						"api",
+						"bookings",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete abooking",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer 20|GTnhjs80t70pxsmMLjIDKLYaiZurMHId5IJqtM7H1eb8f774",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://event.test/api/bookings/6",
+					"protocol": "http",
+					"host": [
+						"event",
+						"test"
+					],
+					"path": [
+						"api",
+						"bookings",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update profile picture",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer 2|z6lDdxrR5RkY55cL9fbDGLLTIFDjiqmgomwSgPKfccac8d29",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "multipart/form-data",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "profile_picture",
+							"type": "file",
+							"src": "/C:/Users/NIZAR/Desktop/images.jpeg"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://event.test/api/user/profile-picture",
+					"protocol": "http",
+					"host": [
+						"event",
+						"test"
+					],
+					"path": [
+						"api",
+						"user",
+						"profile-picture"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "upload event picture",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer 2|z6lDdxrR5RkY55cL9fbDGLLTIFDjiqmgomwSgPKfccac8d29",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "multipart/form-data",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/NIZAR/Desktop/Raizer logos/image1_large.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://event.test/api/events/11/upload",
+					"protocol": "http",
+					"host": [
+						"event",
+						"test"
+					],
+					"path": [
+						"api",
+						"events",
+						"11",
+						"upload"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
